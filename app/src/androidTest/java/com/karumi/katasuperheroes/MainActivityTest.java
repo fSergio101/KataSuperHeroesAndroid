@@ -248,6 +248,7 @@ import static org.mockito.Mockito.when;
                }
         );
 
+
     //onView(withText("Scarlet Witch")).check(matches(isDisplayed()));
     //onView(withText("Iron Man")).check(matches(isDisplayed()));
     //onView(withText("Wolverine")).check(matches(isDisplayed()));
