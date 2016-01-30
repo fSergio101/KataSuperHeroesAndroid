@@ -2,7 +2,6 @@ package com.karumi.katasuperheroes;
 
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -18,12 +17,13 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.karumi.katasuperheroes.matchers.ToolbarMatcher.onToolbarWithTitle;
+import static org.hamcrest.Matchers.allOf;
 import static org.mockito.Mockito.when;
 
 /**
@@ -55,13 +55,24 @@ import static org.mockito.Mockito.when;
     return activityRule.launchActivity(intent);
   }
 
-  @Test public void showsTappedElementUsingIntent() {
+  @Test public void showsElemenAtScreenStart() {
     SuperHero superHero = createMockSuperHero();
     givenSuperHeroByName(superHero);
     startActivity(superHero);
 
     onToolbarWithTitle(superHero.getName()).check(matches(isDisplayed()));
     onView(withText(superHero.getDescription())).check(matches(isDisplayed()));
+  }
+
+  @Test public void showsSuperHeroDescription() {
+    SuperHero superHero = createMockSuperHero();
+    givenSuperHeroByName(superHero);
+    startActivity(superHero);
+    //scrollToView(R.id.tv_super_hero_name);
+
+
+    onView(allOf(withId(R.id.tv_super_hero_name), withText(superHero.getName()))).check(
+        matches(isDisplayed()));
   }
 
   private SuperHero createMockSuperHero() {
@@ -76,6 +87,8 @@ import static org.mockito.Mockito.when;
     when(repository.getByName(superHero.getName())).thenReturn(superHero);
   }
 
-
+  private void scrollToView(int viewId) {
+    onView(withId(viewId)).perform(scrollTo());
+  }
 
 }
