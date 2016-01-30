@@ -70,7 +70,6 @@ import static org.mockito.Mockito.when;
     startActivity(superHero);
     //scrollToView(R.id.tv_super_hero_name);
 
-
     onView(allOf(withId(R.id.tv_super_hero_name), withText(superHero.getName()))).check(
         matches(isDisplayed()));
   }
