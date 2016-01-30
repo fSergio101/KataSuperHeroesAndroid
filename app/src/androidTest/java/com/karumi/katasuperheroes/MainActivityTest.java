@@ -50,6 +50,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.karumi.katasuperheroes.matchers.RecyclerViewItemsCountMatcher.recyclerViewHasItemCount;
+import static com.karumi.katasuperheroes.matchers.ToolbarMatcher.onToolbarWithTitle;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.Mockito.when;
 
@@ -107,7 +108,7 @@ import static org.mockito.Mockito.when;
             + "experimented on them, once he was disgusted with the results, he returned them to"
             + " Wundagore, disguised as regular mutants."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(
         new SuperHero("Iron Man", "https://i.annihil.us/u/prod/marvel/i/mg/c/60/55b6a28ef24fa.jpg",
@@ -116,7 +117,7 @@ import static org.mockito.Mockito.when;
             + "life and escape captivity. Now with a new outlook on life, Tony uses his money "
             + "and intelligence to make the world a safer, better place as Iron Man."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(
         new SuperHero("Wolverine", "https://i.annihil.us/u/prod/marvel/i/mg/9/00/537bcb1133fd7.jpg",
@@ -126,7 +127,7 @@ import static org.mockito.Mockito.when;
                 + "skeleton and claws. Treated like an animal, it took years for him to control"
                 + " himself. Now, he's a premiere member of both the X-Men and the Avengers."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(
         new SuperHero("Hulk", "https://x.annihil.us/u/prod/marvel/i/mg/e/e0/537bafa34baa9.jpg",
@@ -136,7 +137,7 @@ import static org.mockito.Mockito.when;
                 + "Hulk. An all too often misunderstood hero, the angrier the Hulk gets, the "
                 + "stronger the Hulk gets."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
 
     superHeroes.add(
@@ -145,7 +146,7 @@ import static org.mockito.Mockito.when;
             "Ororo Monroe is the descendant of an ancient line of African priestesses, all of whom"
                 + " have white hair, blue eyes, and the potential to wield magic."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(new SuperHero("Spider-Man",
         "https://x.annihil.us/u/prod/marvel/i/mg/6/60/538cd3628a05e.jpg", true,
@@ -154,7 +155,7 @@ import static org.mockito.Mockito.when;
             + "a career using his new abilities. Taught that with great power comes great "
             + "responsibility, Spidey has vowed to use his powers to help people."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(
         new SuperHero("Ultron", "https://i.annihil.us/u/prod/marvel/i/mg/9/a0/537bc7f6d5d23.jpg",
@@ -163,7 +164,7 @@ import static org.mockito.Mockito.when;
                 + "Dr. Henry Pym, Ultron is a criminally insane rogue sentient robot dedicated to"
                 + " conquest and the extermination of humanity."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(new SuperHero("BlackPanther",
         "https://i.annihil.us/u/prod/marvel/i/mg/9/03/537ba26276348.jpg", false,
@@ -175,7 +176,7 @@ import static org.mockito.Mockito.when;
             + "will go to extreme measures to achieve his goals and protect the kingdom "
             + "of Wakanda."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(new SuperHero("Captain America",
         "http://x.annihil.us/u/prod/marvel/i/mg/9/80/537ba5b368b7d.jpg", true,
@@ -185,7 +186,7 @@ import static org.mockito.Mockito.when;
             + "intelligence as well as agility, strength, speed, endurance, and reaction time "
             + "superior to any Olympic athlete who ever competed."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(new SuperHero("Winter Soldier",
         "https://i.annihil.us/u/prod/marvel/i/mg/7/40/537bca868687c.jpg", false,
@@ -193,14 +194,14 @@ import static org.mockito.Mockito.when;
             + "hand-to-hand combat and extremely accurate marksman. he is fluent in four languages "
             + "including German and Russian."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(new SuperHero("Captain Marvel",
         "https://x.annihil.us/u/prod/marvel/i/mg/6/30/537ba61b764b4.jpg", false,
         " Ms. Marvel's current powers include flight, enhanced strength, durability and the "
             + "ability to shoot concussive energy bursts from her hands."));
 
-    if (number == superHeroes.size()) {return;}
+    if (number == superHeroes.size()) { return; }
 
     superHeroes.add(
         new SuperHero("Iron Fist", "https://i.annihil.us/u/prod/marvel/i/mg/6/60/537bb1756cd26.jpg",
@@ -271,6 +272,7 @@ import static org.mockito.Mockito.when;
     onView(withId(R.id.recycler_view)).perform(
         RecyclerViewActions.actionOnItemAtPosition(heroToTest, click()));
 
+    onToolbarWithTitle(superHeros.get(heroToTest).getName()).check(matches(isDisplayed()));
     onView(withText(superHeros.get(heroToTest).getDescription())).check(matches(isDisplayed()));
   }
 

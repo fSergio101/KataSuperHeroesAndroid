@@ -7,6 +7,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 import com.karumi.katasuperheroes.di.MainComponent;
 import com.karumi.katasuperheroes.di.MainModule;
 import com.karumi.katasuperheroes.model.SuperHeroesRepository;
+import com.karumi.katasuperheroes.ui.view.MainActivity;
 import com.karumi.katasuperheroes.ui.view.SuperHeroDetailActivity;
 import it.cosenonjaviste.daggermock.DaggerMockRule;
 import org.junit.Rule;
@@ -35,5 +36,9 @@ import org.mockito.Mock;
       new IntentsTestRule<>(SuperHeroDetailActivity.class, true, false);
 
   @Mock SuperHeroesRepository repository;
+
+  //private SuperHeroDetailActivity startActivity() {
+  //  return activityRule.;
+  //}
 
 }
