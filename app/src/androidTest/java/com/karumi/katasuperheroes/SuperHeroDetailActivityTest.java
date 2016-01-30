@@ -68,7 +68,7 @@ import static org.mockito.Mockito.when;
     SuperHero superHero = createMockSuperHero();
     givenSuperHeroByName(superHero);
     startActivity(superHero);
-    //scrollToView(R.id.tv_super_hero_name);
+    scrollToView(R.id.tv_super_hero_name);
 
     onView(allOf(withId(R.id.tv_super_hero_name), withText(superHero.getName()))).check(
         matches(isDisplayed()));
